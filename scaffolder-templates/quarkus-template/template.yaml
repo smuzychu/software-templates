@@ -76,6 +76,15 @@ spec:
         allowedHosts: ['github.com']
         description: 'This is {{ parameters.component_id }}'
         repoUrl: '{{ parameters.repoUrl }}'
+        repoVisibility: public
+
+    # - id: change_to_public
+    #   name: change_to_public
+    #   action: github:actions:dispatch
+    #   input:
+    #     repoUrl: https://github.com/raf-backstage-demo/shared-workflows?name={{ parameters.component_id }}
+    #     workflowId: set-repo-secrets.yaml
+    #     branchOrTagName: main    
 
     - id: register
       name: Register
