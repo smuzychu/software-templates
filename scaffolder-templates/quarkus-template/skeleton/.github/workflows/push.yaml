@@ -9,6 +9,6 @@ on:
 
 jobs:
   call-workflow:
-    uses: raf-backstage-demo/shared-workflows/.github/workflows/quarkus.yaml@main
-    secrets:
-      OPENSHIFT_TOKEN: ${{ secrets.OPENSHIFT_TOKEN }}
+    uses: raf-backstage-demo/shared-workflows/.github/workflows/quarkus-self-hosted.yaml@main
+    with:
+      app: ${{values.application}}
