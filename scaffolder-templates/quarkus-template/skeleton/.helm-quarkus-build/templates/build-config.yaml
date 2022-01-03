@@ -8,12 +8,9 @@ spec:
   output:
     to:
       kind: DockerImage
-      name: 'ghcr.io/{{ .Values.github.owner }}/{{ .Values.github.repo_name }}:latest'
+      name: 'ghcr.io/{{ .Values.github.owner }}/{{ .Values.github.repo_name }}:{{ .Values.github.commit_sha }}'
     pushSecret:
-      name: '{{ include "quarkus-build.fullname" . }}-ghcr-pusher'
-    imageLabels:
-    - name: "git-commit"
-      value: "{{ .Values.github.commit_sha }}"      
+      name: '{{ include "quarkus-build.fullname" . }}-ghcr-pusher'    
   strategy:
     type: Source
     sourceStrategy:
