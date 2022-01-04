@@ -1,6 +1,6 @@
 apiVersion: v2
 name: ${{values.artifact_id}}-build
-description: "Build chart for: ${{values.description | dump}}"
+description: "Build chart for ${{values.artifact_id}}"
 
 # A chart can be either an 'application' or a 'library' chart.
 #
