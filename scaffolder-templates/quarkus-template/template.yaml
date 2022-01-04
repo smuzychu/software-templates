@@ -62,8 +62,7 @@ spec:
       action: fetch:template
       input:
         url: ./skeleton
-        copyWithoutRender:
-          - .github/workflows/*
+        copyWithoutRender: []
         values:
           component_id: '{{ parameters.component_id }}'
           description: '{{ parameters.description }}'
@@ -72,6 +71,7 @@ spec:
           owner: '{{ parameters.owner }}'
           destination: '{{ parseRepoUrl parameters.repoUrl }}'
           http_port: 8080
+          application: '{{ parameters.application }}'
 
     - id: publish
       name: Publish
@@ -80,15 +80,7 @@ spec:
         allowedHosts: ['github.com']
         description: 'This is {{ parameters.component_id }}'
         repoUrl: '{{ parameters.repoUrl }}'
-        repoVisibility: public
-
-    # - id: change_to_public
-    #   name: change_to_public
-    #   action: github:actions:dispatch
-    #   input:
-    #     repoUrl: https://github.com/raf-backstage-demo/shared-workflows?name={{ parameters.component_id }}
-    #     workflowId: set-repo-secrets.yaml
-    #     branchOrTagName: main    
+        repoVisibility: public    
 
     - id: register
       name: Register
