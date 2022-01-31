@@ -7,7 +7,7 @@ metadata:
     - java
     - quarkus
   links:
-    - url: https://codeready-openshift-workspaces.apps.tmp-raffa.demo.red-chesterfield.com/#https://github.com/raf-backstage-demo/${{values.artifact_id}}
+    - url: https://codeready-openshift-workspaces.apps.control-cluster-raffa.demo.red-chesterfield.com/#https://github.com/raf-backstage-demo/${{values.artifact_id}}
       title: Code Ready Workspaces
       icon: web    
   annotations:
