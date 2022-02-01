@@ -19,6 +19,7 @@ spec:
         - component_id
         - owner
         - java_package_name
+        - application
       properties:
         component_id:
           title: Name
@@ -43,7 +44,8 @@ spec:
         application:
           title: Application
           type: string
-          description: Application which this component belongs to              
+          description: Application which this component belongs to
+          enum: ["app-1", "app2", "app-3",app-4]              
     - title: Choose a location  
       required:
         - repoUrl
