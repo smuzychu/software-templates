@@ -45,7 +45,7 @@ spec:
           title: Application
           type: string
           description: Application which this component belongs to
-          enum: ["app-1", "app2", "app-3",app-4]              
+          enum: ["app-1", "app-2", "app-3",app-4]              
     - title: Choose a location  
       required:
         - repoUrl
