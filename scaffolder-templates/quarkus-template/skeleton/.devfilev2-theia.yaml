@@ -1,6 +1,8 @@
 schemaVersion: 2.1.0
 metadata:
   generateName: ${{values.artifact_id}}
+attributes:
+  controller.devfile.io/storage-type: ephemeral
 components:
   - name: development-tooling
     container:
@@ -38,6 +40,7 @@ commands:
       label: "1. Package the application"
       component: development-tooling
       commandLine: "./mvnw package"
+      workingDir: $PROJECT_SOURCE
       group:
         kind: build
         isDefault: true
@@ -46,6 +49,7 @@ commands:
       label: "2. Start Development mode (Hot reload + debug)"
       component: development-tooling
       commandLine: "./mvnw compile quarkus:dev"
+      workingDir: $PROJECT_SOURCE
       group:
         kind: run
         isDefault: true
