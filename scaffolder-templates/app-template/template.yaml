@@ -35,11 +35,12 @@ spec:
             allowedKinds: 
               - Group                
         size:
-          title: Sizne
+          title: Size
           type: string
           description: Desired size of the environments in which this application will run
-        environements:
-          title: Application
+          enum: ["small","medium","large"]
+        environments:
+          title: Environments
           type: string
           description: Environments needed by this application
           enum: ["build,dev,qa,prod"]
