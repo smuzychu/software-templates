@@ -1,4 +1,4 @@
-{% for environment in (values.environments | split "'" }
+{% for environment in (values.environments | split "'") %}
 ---
 apiVersion: v1
 kind: Namespace
