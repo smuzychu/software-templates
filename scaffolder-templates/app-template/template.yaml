@@ -60,7 +60,7 @@ spec:
 
     - id: pull-request
       name: make a pr with the new namespaces
-      actions: publish:github:pull-request
+      action: publish:github:pull-request
       input:
         repoURL: https://github.com/raf-backstage-demo/approved-namespaces
         branchName: main
