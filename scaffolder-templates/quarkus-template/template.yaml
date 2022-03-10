@@ -45,7 +45,11 @@ spec:
           title: Application
           type: string
           description: Application which this component belongs to
-          enum: ["app-1", "app-2", "app-3",app-4]              
+          #enum: ["app-1", "app-2", "app-3",app-4]
+          ui:field: OwnedEntityPicker
+          ui:options:
+            allowedKinds:
+            - System       
     - title: Choose a location  
       required:
         - repoUrl
@@ -57,6 +61,8 @@ spec:
           ui:options:
             allowedHosts:
               - github.com
+            allowedOwners:
+              - raf-backstage-demo  
 
   steps:
     - id: template
