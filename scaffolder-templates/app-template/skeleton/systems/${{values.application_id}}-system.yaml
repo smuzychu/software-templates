@@ -5,6 +5,6 @@ metadata:
   description: ${{values.description}}
   labels:
     size: ${{values.size}}
-    environments: ${{values.environments}}
+    environments: ${{values.environments.replaceAll(',','-')}}
 spec:
   owner: ${{values.owner}}
