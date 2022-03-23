@@ -8,9 +8,9 @@ spec:
   output:
     to:
       kind: DockerImage
-      name: 'ghcr.io/{{ .Values.github.owner }}/{{ .Values.github.repo_name }}:{{ .Values.github.commit_sha }}'
+      name: 'quay.io/{{ .Values.github.owner }}/{{ .Values.github.repo_name }}:{{ .Values.github.commit_sha }}'
     pushSecret:
-      name: '{{ include "quarkus-build.fullname" . }}-ghcr-pusher'    
+      name: 'quay-push-secret'    
   strategy:
     type: Source
     sourceStrategy:
