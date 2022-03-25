@@ -23,7 +23,7 @@ spec:
   - name: SLOs-{{ $this_destination_service }}
     rules:  
   {{- $params := .Values }}
-  {{- $destination_service := $this_destination_service | replace "." "_" }}
+  {{- $destination_service := $this_destination_service | replace "." "_" | replace "-" "_" }}
   {{- range $alert_key,$alert := .Values.alerts -}}
   {{- range $speed_key,$speed := $alert.speeds -}}
   {{- range $window_key,$window := $speed.windows }}    
