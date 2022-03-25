@@ -12,10 +12,12 @@ apiVersion: monitoring.coreos.com/v1
 kind: PrometheusRule
 metadata:
   name: {{ $this_destination_service }}-alerts
-  namespace: {{ .Release.Namespace }}
+  {{- with .Values.podAnnotations }}
+  annotations:
+    {{- toYaml . | nindent 8 }}
+  {{- end }}
   labels:
-    prometheus: {{ .Values.prometheus }}
-    sre-monitoring: "true"
+    {{- include ".helm.selectorLabels" . | nindent 8 }}
 spec:
   groups:
   - name: SLOs-{{ $this_destination_service }}
