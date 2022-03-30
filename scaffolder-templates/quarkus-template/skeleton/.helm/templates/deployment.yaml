@@ -19,7 +19,6 @@ spec:
       {{- end }}
       labels:
         {{- include ".helm.selectorLabels" . | nindent 8 }}
-        maistra.io/expose-route: 'true'
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
