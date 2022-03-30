@@ -1,0 +1,23 @@
+{{ if (hasSuffix .Release.Namespace "-prod") }}
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: {{ include ".helm.fullname" . }}
+  labels:
+    {{- include ".helm.labels" . | nindent 4 }}  
+spec:
+  schedule: "0 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: load
+            image: ddosify/ddosify:latest
+            imagePullPolicy: IfNotPresent
+            command:
+            - /bin/sh
+            - -c
+            - ddosify -t http://istio-ingressgateway.istio-system.svc:8080 -d 3300 -n 6600 -h "host: {{ include ".helm.fullname" . }}.{{ .Release.Namespace }}.svc"
+          restartPolicy: OnFailure
+{{ end }}          
