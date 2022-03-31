@@ -1,4 +1,4 @@
-{{ if (hasSuffix .Release.Namespace "-prod") }}
+{{ if (hasSuffix "-prod" .Release.Namespace) }}
 apiVersion: batch/v1
 kind: CronJob
 metadata:
@@ -18,6 +18,11 @@ spec:
             command:
             - /bin/sh
             - -c
-            - ddosify -t http://istio-ingressgateway.istio-system.svc:8080 -d 3300 -n 6600 -h "host: {{ include ".helm.fullname" . }}.{{ .Release.Namespace }}.svc"
+            - 'ddosify -t http://istio-ingressgateway.istio-system.svc:8080 -d 3300 -n 6600 -h "host: {{ include ".helm.fullname" . }}.{{ .Release.Namespace }}.svc"'
+            resources:
+              requests:
+                memory: "128Mi"
+                cpu: "250m"            
           restartPolicy: OnFailure
+          
 {{ end }}          

@@ -15,6 +15,9 @@ metadata:
       icon: web    
     - url: https://che-eclipse-che.apps.control-cluster-raffa.demo.red-chesterfield.com/#https://github.com/raf-backstage-demo/${{values.artifact_id}}?che-editor=che-incubator/che-idea/next&devfilePath=.devfilev2-intellij.yaml
       title: CodeReady Workspaces (JetBrains IntelliJ)
+      icon: web
+    - url: https://grafana-route-user-workload-grafana.apps.control-cluster-raffa.demo.red-chesterfield.com/d/AqEG4weWk/error-budget?orgId=1&refresh=5s
+      title: SRE metrics (production)
       icon: web    
   annotations:
     github.com/project-slug: raf-backstage-demo/${{values.artifact_id}}

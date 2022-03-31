@@ -11,7 +11,7 @@
 apiVersion: monitoring.coreos.com/v1
 kind: PrometheusRule
 metadata:
-  name: {{ $this_destination_service }}-alerts
+  name: {{ $destination_service_name }}-alerts
   {{- with .Values.podAnnotations }}
   annotations:
     {{- toYaml . | nindent 8 }}
@@ -23,24 +23,25 @@ spec:
   - name: SLOs-{{ .Release.Namespace }}={{ $destination_service_name }}
     rules:  
   {{- $params := .Values }}
+  {{- $release := .Release }}
   {{- $destination_service := (join .Release.Namespace "_" $destination_service_name) | replace "." "_" | replace "-" "_" }}
   {{- range $alert_key,$alert := .Values.alerts -}}
   {{- range $speed_key,$speed := $alert.speeds -}}
   {{- range $window_key,$window := $speed.windows }}    
       - expr: |
           ( 
-            sum(rate(istio_request_duration_milliseconds_count{destination_service_name_namespace="{{ .Release.Namespace }}",destination_service_namedestination_service_name="{{ $destination_service_name }}"}[{{ $window }}])) -
-            sum(rate(istio_request_duration_milliseconds_bucket{destination_service_name_namespace="{{ .Release.Namespace }}",destination_service_name="{{ $destination_service_name }}",response_code!~"5.*",le="{{ $params.latency }}"}[{{ $window }}]))
+            sum(rate(istio_request_duration_milliseconds_count{destination_service_name_namespace="{{ $release.Namespace }}",destination_service_name="{{ $destination_service_name }}"}[{{ $window }}])) -
+            sum(rate(istio_request_duration_milliseconds_bucket{destination_service_name_namespace="{{ $release.Namespace }}",destination_service_name="{{ $destination_service_name }}",response_code!~"5.*",le="{{ $params.latency }}"}[{{ $window }}]))
           )
           /
-          sum(rate(istio_request_duration_milliseconds_count{destination_service_name_namespace="{{ .Release.Namespace }}",destination_service="{{ $destination_service_name }}"}[{{ $window }}]))
+          sum(rate(istio_request_duration_milliseconds_count{destination_service_name_namespace="{{ $release.Namespace }}",destination_service="{{ $destination_service_name }}"}[{{ $window }}]))
         labels:
           {{ template "metric_labels.array" $labels }}
           service: {{ $destination_service_name }}
         record: virtual_service:{{ $destination_service }}:error_rate_{{ $window }}
   {{- end -}}
   {{- end }}
-      - alert: ErrorBudgetBurn-{{ .Release.Namespace }}={{ $destination_service_name }}
+      - alert: ErrorBudgetBurn-{{ $release.Namespace }}={{ $destination_service_name }}
         expr: |
           (
             virtual_service:{{ $destination_service }}:error_rate_{{ $alert.speeds.fast.windows.long }} > ({{ $alert.speeds.fast.burn_rate_percent }}/100*(1-({{ $params.slo_percent }}/100)))
