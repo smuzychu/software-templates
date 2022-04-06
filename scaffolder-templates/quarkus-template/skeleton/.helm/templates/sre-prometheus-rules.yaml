@@ -24,7 +24,7 @@ spec:
     rules:  
   {{- $params := .Values }}
   {{- $release := .Release }}
-  {{- $destination_service := (join .Release.Namespace "_" $destination_service_name) | replace "." "_" | replace "-" "_" }}
+  {{- $destination_service := (list .Release.Namespace $destination_service_name | join  "_" ) | replace "." "_" | replace "-" "_" }}
   {{- range $alert_key,$alert := .Values.alerts -}}
   {{- range $speed_key,$speed := $alert.speeds -}}
   {{- range $window_key,$window := $speed.windows }}    
