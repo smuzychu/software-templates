@@ -10,8 +10,9 @@ spec:
   jobTemplate:
     spec:
       template:
-        annotations:
-          sidecar.istio.io/inject: 'true'
+        metadata:
+          annotations:
+            sidecar.istio.io/inject: 'true'
         spec:
           containers:
           - name: load
