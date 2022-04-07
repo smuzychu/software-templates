@@ -10,9 +10,6 @@ spec:
   jobTemplate:
     spec:
       template:
-        metadata:
-          annotations:
-            sidecar.istio.io/inject: 'true'
         spec:
           containers:
           - name: load
@@ -21,11 +18,10 @@ spec:
             command:
             - /bin/sh
             - -c
-            - 'ddosify -t http://istio-ingressgateway.istio-system.svc:8080 -d 300 -n 600 -h "host: {{ include ".helm.fullname" . }}.{{ .Release.Namespace }}.svc"'
+            - 'ddosify -t http://istio-ingressgateway.istio-system.svc:80 -d 300 -n 600 -h "host: {{ include ".helm.fullname" . }}.{{ .Release.Namespace }}.svc"'
             resources:
               requests:
                 memory: "128Mi"
                 cpu: "250m"            
-          restartPolicy: OnFailure
-          
+          restartPolicy: OnFailure         
 {{ end }}          
