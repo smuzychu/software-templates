@@ -20,6 +20,7 @@ spec:
         - owner
         - java_package_name
         - application
+        - description
       properties:
         component_id:
           title: Name

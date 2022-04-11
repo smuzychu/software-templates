@@ -17,6 +17,7 @@ spec:
         - owner
         - size
         - environments
+        - description
       properties:
         application_id:
           title: Name
