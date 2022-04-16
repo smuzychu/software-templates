@@ -9,6 +9,6 @@ on:
 
 jobs:
   call-workflow:
-    uses: raf-backstage-demo/shared-workflows/.github/workflows/quarkus-self-hosted.yaml@main
+    uses: raf-backstage-demo/shared-workflows/.github/workflows/quarkus-ci-cd.yaml@main
     with:
       app: ${{values.application}}
