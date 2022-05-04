@@ -24,6 +24,7 @@ metadata:
     'backstage.io/kubernetes-id': ${{values.artifact_id}}
     'backstage.io/kubernetes-label-selector': 'app.kubernetes.io/name=${{values.artifact_id}}'
     'backstage.io/techdocs-ref': dir:.
+    'sonarqube.org/project-key': raf-backstage-demo_${{values.artifact_id}}
 spec:
   type: service
   lifecycle: experimental
