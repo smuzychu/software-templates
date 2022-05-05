@@ -11,4 +11,4 @@ jobs:
   call-workflow:
     uses: raf-backstage-demo/shared-workflows/.github/workflows/quarkus-ci-cd.yaml@main
     with:
-      app: ${{values.application}}
+      app: ${{values.application | dump}}
