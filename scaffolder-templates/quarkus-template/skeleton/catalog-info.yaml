@@ -25,6 +25,8 @@ metadata:
     'backstage.io/kubernetes-label-selector': 'app.kubernetes.io/name=${{values.artifact_id}}'
     'backstage.io/techdocs-ref': dir:.
     'sonarqube.org/project-key': raf-backstage-demo_${{values.artifact_id}}
+    'prometheus.io/alert': ErrorBudgetBurn-critical-${{values.application | dump}}-prod-${{values.artifact_id}},ErrorBudgetBurn-warning-${{values.application | dump}}-prod-${{values.artifact_id}}
+    'prometheus.io/rule': virtual_service:${{values.application | dump}}_prod_${{values.artifact_id}}:error_rate_1d,virtual_service:${{values.application | dump}}_prod_${{values.artifact_id}}:error_rate_1h,virtual_service:${{values.application | dump}}_prod_${{values.artifact_id}}:error_rate_2h,virtual_service:${{values.application | dump}}_prod_${{values.artifact_id}}:error_rate_30m
 spec:
   type: service
   lifecycle: experimental
