@@ -16,7 +16,7 @@ metadata:
     - url: https://che-eclipse-che.apps.control-cluster-raffa.demo.red-chesterfield.com/#https://github.com/raf-backstage-demo/${{values.artifact_id}}?che-editor=che-incubator/che-idea/next&devfilePath=.devfilev2-intellij.yaml
       title: CodeReady Workspaces (JetBrains IntelliJ)
       icon: web
-    - url: https://grafana-route-user-workload-grafana.apps.control-cluster-raffa.demo.red-chesterfield.com/d/AqEG4weWk/error-budget?orgId=1&refresh=5s&var-virtual_service=${{values.artifact_id}}.${{values.application | dump}}-prod.svc.cluster.local&var-time_interval=1h&var-SLO=95&var-latency=1000
+    - url: https://grafana-route-user-workload-grafana.apps.control-cluster-raffa.demo.red-chesterfield.com/d/AqEG4weWk/error-budget?orgId=1&refresh=5s&var-virtual_service=${{values.artifact_id}}.${{values.application.substring(":")[1]}}-prod.svc.cluster.local&var-time_interval=1h&var-SLO=95&var-latency=1000
       title: SRE Metrics (production)
       icon: web
     - url: https://grafana-route-user-workload-grafana.apps.control-cluster-raffa.demo.red-chesterfield.com/d/nbtIPTOGz/software-delivery-performance-by-app?orgId=1&var-app=${{values.artifact_id}}
@@ -28,10 +28,10 @@ metadata:
     'backstage.io/kubernetes-label-selector': 'app.kubernetes.io/name=${{values.artifact_id}}'
     'backstage.io/techdocs-ref': dir:.
     'sonarqube.org/project-key': raf-backstage-demo_${{values.artifact_id}}
-    'prometheus.io/alert': ErrorBudgetBurn-critical-${{values.application | dump}}-prod-${{values.artifact_id}},ErrorBudgetBurn-warning-${{values.application | dump}}-prod-${{values.artifact_id}}
-    'prometheus.io/rule': virtual_service:${{values.application | dump}}_prod_${{values.artifact_id}}:error_rate_1d,virtual_service:${{values.application | dump}}_prod_${{values.artifact_id}}:error_rate_1h,virtual_service:${{values.application | dump}}_prod_${{values.artifact_id}}:error_rate_2h,virtual_service:${{values.application | dump}}_prod_${{values.artifact_id}}:error_rate_30m
+    'prometheus.io/alert': ErrorBudgetBurn-critical-${{values.application.substring(":")[1]}}-prod-${{values.artifact_id}},ErrorBudgetBurn-warning-${{values.application.substring(":")[1]}}-prod-${{values.artifact_id}}
+    'prometheus.io/rule': virtual_service:${{values.application.substring(":")[1]}}_prod_${{values.artifact_id}}:error_rate_1d,virtual_service:${{values.application.substring(":")[1]}_prod_${{values.artifact_id}}:error_rate_1h,virtual_service:${{values.application.substring(":")[1]}}_prod_${{values.artifact_id}}:error_rate_2h,virtual_service:${{values.application.substring(":")[1]}}_prod_${{values.artifact_id}}:error_rate_30m
 spec:
   type: service
   lifecycle: experimental
   owner: ${{values.owner | dump}}
-  system: ${{values.application | dump}}
+  system: ${{values.application}}
