@@ -9,4 +9,4 @@ jobs:
   call-workflow:
     uses: raf-backstage-demo/shared-workflows/.github/workflows/quarkus-ci.yaml@main
     with:
-      app: ${{values.application | dump}}
+      app: ${{values.application.split(":")[1]}}
