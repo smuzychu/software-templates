@@ -89,7 +89,9 @@ spec:
         allowedHosts: ['github.com']
         description: This is ${{ parameters.component_id }}
         repoUrl: ${{ parameters.repoUrl }}
-        repoVisibility: public    
+        repoVisibility: public
+        deleteBranchOnMerge: true
+        access: raf-backstage-demo/${{ parameters.owner }}        
 
     - id: register
       name: Register
