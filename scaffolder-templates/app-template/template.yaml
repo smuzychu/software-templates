@@ -84,7 +84,7 @@ spec:
       input:
         allowedHosts: ['github.com']
         description: This is ${{ parameters.application_id }}
-        repoUrl: https://github.com/raf-backstage-demo/${{ parameters.application_id }}-gitops
+        repoUrl: github.com?repo=${{ parameters.application_id }}-gitops&owner=raf-backstage-demo
         repoVisibility: public
         sourcePath: ./app-gitops
         deleteBranchOnMerge: true
