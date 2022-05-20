@@ -2,8 +2,8 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: ${{ values.component_id }}
-  namespace: ${{values.application.split(":")[1]}}-dev
+  name: ${{ values.component_id }}-dev
+  namespace: ${{values.application.split(":")[1]}}-build
 spec:
   project: default
   source:
@@ -18,7 +18,7 @@ spec:
           tag: dummy
   destination:
     server: https://kubernetes.default.svc
-    namespace: ${{values.application.split(":")[1]}}-build
+    namespace: ${{values.application.split(":")[1]}}-dev
   syncPolicy:
     automated: 
       prune: true
@@ -34,8 +34,8 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: ${{ values.component_id }}
-  namespace: ${{values.application.split(":")[1]}}-qa
+  name: ${{ values.component_id }}-qa
+  namespace: ${{values.application.split(":")[1]}}-build
 spec:
   project: default
   source:
@@ -50,7 +50,7 @@ spec:
           tag: dummy
   destination:
     server: https://kubernetes.default.svc
-    namespace: ${{values.application.split(":")[1]}}-build
+    namespace: ${{values.application.split(":")[1]}}-qa
   syncPolicy:
     automated: 
       prune: true
@@ -66,8 +66,8 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: ${{ values.component_id }}
-  namespace: ${{values.application.split(":")[1]}}-prod
+  name: ${{ values.component_id }}-prod
+  namespace: ${{values.application.split(":")[1]}}-build
 spec:
   project: default
   source:
@@ -82,7 +82,7 @@ spec:
           tag: dummy
   destination:
     server: https://kubernetes.default.svc
-    namespace: ${{values.application.split(":")[1]}}-build
+    namespace: ${{values.application.split(":")[1]}}-prod
   syncPolicy:
     automated: 
       prune: true
