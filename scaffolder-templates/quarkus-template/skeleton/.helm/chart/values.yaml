@@ -1,0 +1,2 @@
+quarkus-run:
+  fullnameOverride: ${{values.artifact_id}}
