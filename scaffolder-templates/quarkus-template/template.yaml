@@ -67,7 +67,7 @@ spec:
 
   steps:
     - id: template
-      name: Fetch Skeleton + Template
+      name: Code Fetch Skeleton + Template
       action: fetch:template
       input:
         url: ./skeleton
@@ -102,7 +102,7 @@ spec:
         catalogInfoPath: '/catalog-info.yaml'
 
     - id: template-tenant-gitops 
-      name: Fetch Skeleton + Template
+      name: tenant Argcd Fetch Skeleton + Template
       action: fetch:template
       input:
         url: ./app-gitops
@@ -122,7 +122,7 @@ spec:
       name: make a pr with the new argocd
       action: publish:github:pull-request
       input:
-        repoUrl: github.com?repo=${{ parameters.application_id.split(":")[1] }}&owner=raf-backstage-demo
+        repoUrl: github.com?repo=${{ parameters.application.split(":")[1] }}&owner=raf-backstage-demo
         branchName: ${{ parameters.component_id }}
         title: namespaces for ${{ parameters.component_id }}
         description: namespaces for ${{ parameters.component_id }}  
