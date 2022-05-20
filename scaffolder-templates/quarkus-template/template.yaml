@@ -125,7 +125,8 @@ spec:
         repoUrl: github.com?repo=${{ parameters.application.split(":")[1] }}-gitops&owner=raf-backstage-demo
         branchName: ${{ parameters.component_id }}
         title: namespaces for ${{ parameters.component_id }}
-        description: namespaces for ${{ parameters.component_id }}  
+        description: namespaces for ${{ parameters.component_id }}
+        sourcePath: ./tenant-gitops  
 
   output:
     links:
