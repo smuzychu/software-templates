@@ -122,7 +122,7 @@ spec:
       name: make a pr with the new argocd
       action: publish:github:pull-request
       input:
-        repoUrl: github.com?repo=${{ parameters.application.split(":")[1] }}&owner=raf-backstage-demo
+        repoUrl: github.com?repo=${{ parameters.application.split(":")[1] }}-gitops&owner=raf-backstage-demo
         branchName: ${{ parameters.component_id }}
         title: namespaces for ${{ parameters.component_id }}
         description: namespaces for ${{ parameters.component_id }}  
