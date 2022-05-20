@@ -9,10 +9,10 @@ spec:
   source:
     repoURL: https://github.com/raf-backstage-demo/${{ values.component_id }}
     targetRevision: HEAD
-    path: ./helm/chart
+    path: .helm/chart
     helm:
       valueFiles:
-        - ../../helm/value-files/values-dev.yaml
+        - ../helm/value-files/values-dev.yaml
       values: |
         quarkus-run: 
           image:
@@ -42,10 +42,10 @@ spec:
   source:
     repoURL: https://github.com/raf-backstage-demo/${{ values.component_id }}
     targetRevision: HEAD
-    path: ./helm/chart
+    path: .helm/chart
     helm:
       valueFiles:
-        - ../../helm/value-files/values-qa.yaml
+        - ../value-files/values-qa.yaml
       values: | 
         quarkus-run: 
           image:
@@ -78,7 +78,7 @@ spec:
     path: .helm/chart
     helm:
       valueFiles:
-        - ../../value-files/values-prod.yaml
+        - ../value-files/values-prod.yaml
       values: | 
         quarkus-run: 
           image:
