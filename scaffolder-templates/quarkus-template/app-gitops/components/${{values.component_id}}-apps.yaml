@@ -13,9 +13,10 @@ spec:
     helm:
       valueFiles:
         - ./helm/value-files/values-dev.yaml
-      values: | 
-        image:
-          tag: dummy
+      values: |
+        quarkus-run: 
+          image:
+            tag: dummy
   destination:
     server: https://kubernetes.default.svc
     namespace: ${{values.application.split(":")[1]}}-dev
@@ -46,8 +47,9 @@ spec:
       valueFiles:
         - ./helm/value-files/values-qa.yaml
       values: | 
-        image:
-          tag: dummy
+        quarkus-run: 
+          image:
+            tag: dummy
   destination:
     server: https://kubernetes.default.svc
     namespace: ${{values.application.split(":")[1]}}-qa
@@ -78,8 +80,9 @@ spec:
       valueFiles:
         - ./helm/value-files/values-prod.yaml
       values: | 
-        image:
-          tag: dummy
+        quarkus-run: 
+          image:
+            tag: dummy
   destination:
     server: https://kubernetes.default.svc
     namespace: ${{values.application.split(":")[1]}}-prod
