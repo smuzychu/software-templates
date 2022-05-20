@@ -11,7 +11,7 @@ spec:
     targetRevision: HEAD
     path: .helm/chart
     helm:
-      value_files:
+      valueFiles:
         - ./helm/value-files/values-dev.yaml
       values: | 
         image:
@@ -43,7 +43,7 @@ spec:
     targetRevision: HEAD
     path: .helm/chart
     helm:
-      value_files:
+      valueFiles:
         - ./helm/value-files/values-qa.yaml
       values: | 
         image:
@@ -75,7 +75,7 @@ spec:
     targetRevision: HEAD
     path: .helm/chart
     helm:
-      value_files:
+      valueFiles:
         - ./helm/value-files/values-prod.yaml
       values: | 
         image:
