@@ -12,7 +12,7 @@ spec:
     path: .helm/chart
     helm:
       valueFiles:
-        - ../helm/value-files/values-dev.yaml
+        - ../value-files/values-dev.yaml
       values: |
         quarkus-run: 
           image:
