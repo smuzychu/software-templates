@@ -1,2 +1,3 @@
 quarkus-run:
   fullnameOverride: ${{values.artifact_id}}
+  repository: quay.io/raf-backstage-demo/${{values.artifact_id}}
