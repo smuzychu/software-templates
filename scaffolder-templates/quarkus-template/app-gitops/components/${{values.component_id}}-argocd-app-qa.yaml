@@ -3,6 +3,8 @@ kind: Application
 metadata:
   name: ${{ values.component_id }}-qa
   namespace: ${{values.application.split(":")[1]}}-build
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io  
 spec:
   project: default
   source:
