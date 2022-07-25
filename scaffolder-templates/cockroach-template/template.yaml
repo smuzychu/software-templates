@@ -1,0 +1,68 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: database-template
+  title: Database Template
+  description: A cockroach serverless template for applications that require a database
+  tags:
+    - database
+spec:
+  owner: service@example.com
+  type: resource
+  
+  parameters:
+    - title: Provide information on this database
+      required:
+        - application_id
+        - owner
+        - database_id
+        - description
+      properties:
+        database_id:
+          title: Database ID
+          type: string
+          description: name of this cockroach-serverless instance
+        description:
+          title: Description
+          type: string
+          description: Help others understand what this database is for.             
+        application_id:
+          title: Name
+          type: string
+          description: Unique name of the application that includes this database               
+
+
+  steps:
+    - id: template-gitops
+      name: Fetch Skeleton + Template
+      action: fetch:template
+      input:
+        url: ./skeleton
+        copyWithoutRender: []
+        values: {}
+        targetPath: ./database
+
+    - id: publish
+      name: Publish
+      action: publish:github
+      input:
+        allowedHosts: ['github.com']
+        description: This is ${{ parameters.application_id }}
+        repoUrl: github.com?repo=${{ parameters.application_id }}-gitops&owner=raf-backstage-demo
+        repoVisibility: public
+        sourcePath: ./database
+        deleteBranchOnMerge: true
+        access: raf-backstage-demo/${{ parameters.owner }}
+
+    - id: register
+      name: Register
+      action: catalog:register
+      input:
+        repoContentsUrl: '${{ steps.publish.output.repoContentsUrl }}'
+        catalogInfoPath: '/resources/${{ parameters.database_id }}.yaml'        
+
+  output:
+    links:
+      - title: Open in catalog
+        icon: catalog
+        entityRef: ${{ steps.register.output.entityRef }}
