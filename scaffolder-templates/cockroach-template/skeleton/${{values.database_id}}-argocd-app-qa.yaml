@@ -3,7 +3,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: ${{ values.database_id }}-qa
-  namespace: ${{values.application.split(":")[1]}}-build
+  namespace: ${{values.application_id.split(":")[1]}}-build
   finalizers:
     - resources-finalizer.argocd.argoproj.io  
 spec:
@@ -14,11 +14,11 @@ spec:
     targetRevision: '0.1.0'
     helm:
       values: |
-        application: ${{values.application.split(":")[1]}} 
+        application: ${{values.application_id.split(":")[1]}} 
         environment: qa
   destination:
     server: https://kubernetes.default.svc
-    namespace: ${{values.application.split(":")[1]}}-qa
+    namespace: ${{values.application_id.split(":")[1]}}-qa
   syncPolicy:
     automated: 
       prune: true

@@ -27,9 +27,13 @@ spec:
           type: string
           description: Help others understand what this database is for.             
         application_id:
-          title: Name
+          title: Application
           type: string
           description: Unique name of the application that includes this database
+          ui:field: OwnedEntityPicker
+          ui:options:
+            allowedKinds:
+            - System
         owner:
           title: Owner
           type: string
