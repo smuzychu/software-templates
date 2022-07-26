@@ -66,17 +66,4 @@ spec:
         repoUrl: github.com?repo=${{ parameters.application_id.split(":")[1] }}-gitops&owner=raf-backstage-demo
         branchName: ${{ parameters.database_id }}
         title: argocd apps for ${{ parameters.database_id }} database
-        sourcePath: ./database       
-
-    - id: register
-      name: Register
-      action: catalog:register
-      input:
-        repoContentsUrl: '${{ steps.publish.output.repoContentsUrl }}'
-        catalogInfoPath: '/resources/${{ parameters.database_id }}.yaml'        
-
-  output:
-    links:
-      - title: Open in catalog
-        icon: catalog
-        entityRef: ${{ steps.register.output.entityRef }}
+        sourcePath: ./database
