@@ -63,8 +63,8 @@ spec:
       action: publish:github
       input:
         allowedHosts: ['github.com']
-        description: This is ${{ parameters.application_id }}
-        repoUrl: github.com?repo=${{ parameters.application_id }}-gitops&owner=raf-backstage-demo
+        description: This is the ${{ parameters.database_id }} database in the ${{ parameters.application_id.split(":")[1] }} application
+        repoUrl: github.com?repo=${{ parameters.application_id.split(":")[1] }}-gitops&owner=raf-backstage-demo
         repoVisibility: public
         sourcePath: ./database
         deleteBranchOnMerge: true
