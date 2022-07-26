@@ -51,7 +51,11 @@ spec:
       input:
         url: ./skeleton
         copyWithoutRender: []
-        values: {}
+        values: 
+          database_id: ${{ parameters.database_id }}
+          description: ${{ parameters.description }}
+          application_id: ${{ parameters.application_id }}
+          owner: ${{ parameters.owner }}       
         targetPath: ./database
 
     - id: publish
