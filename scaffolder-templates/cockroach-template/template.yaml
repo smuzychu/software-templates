@@ -58,17 +58,15 @@ spec:
           owner: ${{ parameters.owner }}       
         targetPath: ./database
 
-    - id: publish
-      name: Publish
-      action: publish:github
+    - id: pull-request
+      name: make a pr with the new argocd apps for database provisioning
+      action: publish:github:pull-request
       input:
-        allowedHosts: ['github.com']
-        description: This is the ${{ parameters.database_id }} database in the ${{ parameters.application_id.split(":")[1] }} application
+        description: argocd apps ${{ parameters.database_id }}
         repoUrl: github.com?repo=${{ parameters.application_id.split(":")[1] }}-gitops&owner=raf-backstage-demo
-        repoVisibility: public
-        sourcePath: ./database
-        deleteBranchOnMerge: true
-        access: raf-backstage-demo/${{ parameters.owner }}
+        branchName: ${{ parameters.database_id }}
+        title: argocd apps for ${{ parameters.database_id }} database
+        sourcePath: ./database       
 
     - id: register
       name: Register
