@@ -1,0 +1,9 @@
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: ${{ values.database_id }}
+  description: ${{ values.description }}
+spec:
+  type: database
+  owner: ${{ values.owner }}
+  system: ${{ values.application_id }}

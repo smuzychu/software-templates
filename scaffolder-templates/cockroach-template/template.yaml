@@ -14,9 +14,9 @@ spec:
     - title: Provide information on this database
       required:
         - application_id
-        - owner
         - database_id
         - description
+        - owner        
       properties:
         database_id:
           title: Database ID
@@ -29,7 +29,15 @@ spec:
         application_id:
           title: Name
           type: string
-          description: Unique name of the application that includes this database               
+          description: Unique name of the application that includes this database
+        owner:
+          title: Owner
+          type: string
+          description: Owner of the component
+          ui:field: OwnerPicker
+          ui:options:
+            allowedKinds: 
+              - Group                        
 
 
   steps:
