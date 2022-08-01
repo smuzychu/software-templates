@@ -11,7 +11,7 @@ spec:
   source:
     repoURL: https://raf-backstage-demo.github.io/shared-workflows
     chart: cockroach-serverless
-    targetRevision: '0.1.5'
+    targetRevision: '0.1.14'
     helm:
       values: |
         application: ${{values.application_id.split(":")[1]}} 
@@ -25,6 +25,8 @@ spec:
       selfHeal: true
     syncOptions:
     - CreateNamespace=false
+    - RespectIgnoreDifferences=true
+    - ApplyOutOfSyncOnly=true    
     retry:
       backoff:
         duration: 5s # the amount to back off. Default unit is seconds, but could also be a duration (e.g. "2m", "1h")
@@ -35,4 +37,10 @@ spec:
     kind: DBaaSConnection
     namespace: ${{values.application_id.split(":")[1]}}-prod
     jsonPointers:
-    - /spec/instanceID                     
+    - /spec/instanceID
+  - group: redhatcop.redhat.io    
+    kind: DatabaseSecretEngineConfig
+    namespace: ${{values.application_id.split(":")[1]}}-prod
+    jsonPointers:
+    - /spec/username
+    - /spec/connectionURL                         
