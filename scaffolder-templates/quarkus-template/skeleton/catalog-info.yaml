@@ -20,9 +20,8 @@ metadata:
       title: SRE Metrics (production)
       icon: web
   annotations:
-    github.com/project-slug: raf-backstage-demo/${{values.artifact_id}}
+    'github.com/project-slug': raf-backstage-demo/${{values.artifact_id}}
     'backstage.io/kubernetes-id': ${{values.artifact_id}}
-    'backstage.io/kubernetes-label-selector': 'app.kubernetes.io/name=${{values.artifact_id}}'
     'backstage.io/techdocs-ref': dir:.
     'sonarqube.org/project-key': raf-backstage-demo_${{values.artifact_id}}
     'prometheus.io/alert': ErrorBudgetBurn-critical-${{values.application.split(":")[1]}}-prod-${{values.artifact_id}},ErrorBudgetBurn-warning-${{values.application.split(":")[1]}}-prod-${{values.artifact_id}}
