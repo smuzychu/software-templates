@@ -1,2 +1,6 @@
 quarkus-run:
   replicaCount: 3
+
+  podEnvironmentVariables:
+    - name: QUARKUS_PROFILE
+      value: qa  

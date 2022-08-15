@@ -10,4 +10,8 @@ quarkus-run:
       - setWeight: 60
       - pause: {duration: 10}
       - setWeight: 80
-      - pause: {duration: 10}   
+      - pause: {duration: 10}  
+
+  podEnvironmentVariables:
+    - name: QUARKUS_PROFILE
+      value: prod       

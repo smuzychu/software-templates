@@ -1,2 +1,6 @@
 quarkus-run:
   replicaCount: 1
+
+  podEnvironmentVariables:
+    - name: QUARKUS_PROFILE
+      value: remote_dev  
