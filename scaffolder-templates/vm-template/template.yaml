@@ -51,6 +51,7 @@ spec:
       input:
         url: ./skeleton
         copyWithoutRender: []
+        targetPath: vm
         values:
           application_id: ${{ parameters.application }}
           resource_id: ${{ parameters.resource }}
@@ -64,6 +65,6 @@ spec:
         branchName: ${{ parameters.resource }}
         title: ${{ parameters.resource }} VM
         description:  ${{ parameters.resource }} virtual machine
-        sourcePath: ./skeleton      
+        sourcePath: ./mvs      
 
 
