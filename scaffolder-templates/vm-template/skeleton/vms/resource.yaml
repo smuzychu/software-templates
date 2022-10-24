@@ -1,8 +1,8 @@
 apiVersion: backstage.io/v1alpha1
 kind: Resource
 metadata:
-  name: ${{values.artifact_id}}
-  description: a VM
+  name: ${{values.resource_id}}
+  description: a Fedora VM
 spec:
   type: virtual-machine
   owner: ${{values.owner}}
