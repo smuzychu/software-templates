@@ -1,2 +1,2 @@
-name: ${{values.application_id}}-dev
-namespace: ${{values.artifact_id}}
+name: ${{values.resource}}
+namespace: ${{values.application_id.split(":")[1]}}-dev
