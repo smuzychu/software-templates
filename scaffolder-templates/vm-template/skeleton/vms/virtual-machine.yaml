@@ -1,2 +1,1 @@
 name: ${{values.resource_id}}
-namespace: ${{values.application_id.split(":")[1]}}-dev
