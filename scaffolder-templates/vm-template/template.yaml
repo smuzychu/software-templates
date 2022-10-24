@@ -51,7 +51,6 @@ spec:
       input:
         url: ./skeleton
         copyWithoutRender: []
-        targetPath: vm
         values:
           application_id: ${{ parameters.application }}
           resource_id: ${{ parameters.resource }}
@@ -64,7 +63,6 @@ spec:
         repoUrl: github.com?repo=${{ parameters.application.split(":")[1] }}-gitops&owner=raf-backstage-demo
         branchName: ${{ parameters.resource }}
         title: ${{ parameters.resource }} VM
-        description:  ${{ parameters.resource }} virtual machine
-        sourcePath: ./mvs      
+        description:  ${{ parameters.resource }} virtual machine  
 
 
