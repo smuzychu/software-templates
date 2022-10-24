@@ -5,5 +5,5 @@ metadata:
   description: a VM
 spec:
   type: virtual-machine
-  owner: ${{value.owner}}
+  owner: ${{values.owner}}
   system: ${{values.application_id}}
