@@ -1,0 +1,9 @@
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: ${{values.artifact_id}}
+  description: a VM
+spec:
+  type: virtual-machine
+  owner: ${{value.owner}}
+  system: ${{values.application_id}}

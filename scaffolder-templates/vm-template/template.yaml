@@ -1,0 +1,71 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: virtual-machine-template
+  title: Vritual Machine Template
+  description: An template to request a Virtual Machine
+  tags:
+    - resource
+spec:
+  owner: service@example.com
+  type: system
+  
+  parameters:
+    - title: Provide information on this virtual machine
+      required:
+        - application
+        - resource
+        - owner
+      properties:
+        resource:
+          title: Name
+          type: string
+          description: Unique name of this virtual machine
+        application:
+          title: Application
+          type: string
+          description: Application which this component belongs to
+          #enum: ["app-1", "app-2", "app-3",app-4]
+          ui:field: OwnedEntityPicker
+          ui:options:
+            allowedKinds:
+            - System
+        owner:
+          title: Owner
+          type: string
+          description: Owner of the component
+          ui:field: OwnerPicker
+          ui:options:
+            allowedKinds: 
+              - Group                      
+
+  steps:
+    - id: template-namespaces 
+      name: Fetch Skeleton + Template
+      action: fetch:template
+      input:
+        url: ./skeleton
+        copyWithoutRender: []
+        values:
+          application_id: ${{ parameters.application }}
+          resource_id: ${{ parameters.resource }}
+          owner: ${{ parameters.owner }}
+
+    - id: pull-request
+      name: make a pr with the new vm
+      action: publish:github:pull-request
+      input:
+        repoUrl: github.com?repo=${{ parameters.application.split(":")[1] }}-gitops&owner=raf-backstage-demo
+        branchName: ${{ parameters.resource }}
+        title: ${{ parameters.resource }} VM
+        description:  ${{ parameters.resource }} virtual machine
+        sourcePath: ./tenant-gitops
+
+    - id: register
+      name: Register
+      action: catalog:register
+      input:
+        repoContentsUrl: '${{ steps.publish.output.repoContentsUrl }}'
+        catalogInfoPath: '/catalog-info.yaml'        
+
+
