@@ -4,10 +4,10 @@ metadata:
   name: ${{values.resource_id}}
   description: a Fedora VM
   links:
-    - url: https://console-openshift-console.apps.control-cluster-raffa.demo.red-chesterfield.com/k8s/ns/openshift-cnv/kubevirt.io~v1~VirtualMachine/${{values.resource_id}}/console/standalone
+    - url: https://console-openshift-console.apps.control-cluster-raffa.demo.red-chesterfield.com/k8s/ns/${{values.application_id}}/kubevirt.io~v1~VirtualMachine/${{values.resource_id}}/console/standalone
       title: VM Console
       icon: web  
 spec:
   type: virtual-machine
   owner: ${{values.owner}}
-  system: ${{values.application_id}}
+  system: system:${{values.application_id}}

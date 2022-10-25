@@ -52,7 +52,7 @@ spec:
         url: ./skeleton
         copyWithoutRender: []
         values:
-          application_id: ${{ parameters.application }}
+          application_id: ${{ parameters.application.split(":")[1] }}
           resource_id: ${{ parameters.resource }}
           owner: ${{ parameters.owner }}
 
