@@ -2,7 +2,7 @@ apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
   name: virtual-machine-template
-  title: Vritual Machine Template
+  title: Virtual Machine Template
   description: An template to request a Virtual Machine
   tags:
     - resource
