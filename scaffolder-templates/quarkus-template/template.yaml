@@ -116,6 +116,8 @@ spec:
           destination: ${{ parameters.repoUrl | parseRepoUrl }}
           http_port: 8080
           application: ${{ parameters.application }}
+          organization: raf-backstage-demo
+          baseURL: control-cluster-raffa.demo.red-chesterfield.com
         targetPath: ./tenant-gitops          
 
     - id: pull-request

@@ -1,8 +1,7 @@
----
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: ${{ values.component_id }}-dev
+  name: ${{ values.component_id }}-qa
   namespace: ${{values.application.split(":")[1]}}-build
   finalizers:
     - resources-finalizer.argocd.argoproj.io  
@@ -11,17 +10,16 @@ spec:
   source:
     repoURL: https://github.com/raf-backstage-demo/${{values.application.split(":")[1]}}-gitops
     targetRevision: HEAD
-    path: ./components/${{ values.component_id }}/chart
+    path: ./components/${{ values.component_id }}/pipeline
     helm:
       valueFiles:
-        - ../value-files/values-dev.yaml
-      values: |
-        quarkus-run: 
-          image:
-            tag: dummy
+        - ../value-files/values-pipeline.yaml
+      values: | 
+        quarkus-pipeline: 
+          baseURL: ${{values.baseURL}}
   destination:
     server: https://kubernetes.default.svc
-    namespace: ${{values.application.split(":")[1]}}-dev
+    namespace: ${{values.application.split(":")[1]}}-build
   syncPolicy:
     automated: 
       prune: true
@@ -34,11 +32,4 @@ spec:
       backoff:
         duration: 5s # the amount to back off. Default unit is seconds, but could also be a duration (e.g. "2m", "1h")
         factor: 2 # a factor to multiply the base duration after each failed retry
-        maxDuration: 10m # the maximum amount of time allowed for the backoff strategy 
-  ignoreDifferences:      
-  - group: networking.istio.io
-    kind: VirtualService
-    name: ${{ values.component_id }}
-    namespace: ${{values.application.split(":")[1]}}-dev
-    jsonPointers:
-    - /spec/hosts                     
+        maxDuration: 10m # the maximum amount of time allowed for the backoff strategy                          

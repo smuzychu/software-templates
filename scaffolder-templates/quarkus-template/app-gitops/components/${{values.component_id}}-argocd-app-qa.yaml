@@ -8,9 +8,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/raf-backstage-demo/${{ values.component_id }}
+    repoURL: https://github.com/raf-backstage-demo/${{values.application.split(":")[1]}}-gitops
     targetRevision: HEAD
-    path: .helm/chart
+    path: ./components/${{ values.component_id }}/chart
     helm:
       valueFiles:
         - ../value-files/values-qa.yaml
