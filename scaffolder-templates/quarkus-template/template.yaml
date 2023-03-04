@@ -118,6 +118,8 @@ spec:
           application: ${{ parameters.application }}
           organization: raf-backstage-demo
           baseURL: control-cluster-raffa.demo.red-chesterfield.com
+          team: ${{ parameters.owner }}
+          repo_id: ${{ parameters.component_id }}
         targetPath: ./tenant-gitops          
 
     - id: pull-request

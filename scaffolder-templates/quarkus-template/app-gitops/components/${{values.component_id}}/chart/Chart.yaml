@@ -25,5 +25,5 @@ appVersion: "1.16.0"
 
 dependencies:
   - name: quarkus-run
-    version: "0.1.19"
+    version: "0.1.20"
     repository: https://raf-backstage-demo.github.io/shared-workflows
