@@ -92,7 +92,8 @@ spec:
         repoUrl: ${{ parameters.repoUrl }}
         repoVisibility: public
         deleteBranchOnMerge: true
-        access: raf-backstage-demo/${{ parameters.owner }}        
+        access: raf-backstage-demo/${{ parameters.owner }}
+        baseURL: control-cluster-raffa.demo.red-chesterfield.com        
 
     - id: register
       name: Register
