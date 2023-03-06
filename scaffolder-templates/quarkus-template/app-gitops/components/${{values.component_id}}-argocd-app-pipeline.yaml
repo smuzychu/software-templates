@@ -17,6 +17,7 @@ spec:
       values: | 
         quarkus-pipeline: 
           baseURL: ${{values.baseURL}}
+          application: ${{values.application.split(":")[1]}}
   destination:
     server: https://kubernetes.default.svc
     namespace: ${{values.application.split(":")[1]}}-build
