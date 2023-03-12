@@ -68,6 +68,7 @@ spec:
         branchName: ${{ parameters.application_id }}
         title: namespaces for ${{ parameters.application_id }}
         description: namespaces for ${{ parameters.application_id }}
+        
 
     - id: template-gitops
       name: Fetch Skeleton + Template
@@ -89,3 +90,5 @@ spec:
         sourcePath: ./app-gitops
         deleteBranchOnMerge: true
         access: raf-backstage-demo/${{ parameters.owner }}
+        protectDefaultBranch: false
+        deleteBranchOnMerge: true
