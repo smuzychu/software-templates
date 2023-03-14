@@ -91,4 +91,3 @@ spec:
         deleteBranchOnMerge: true
         access: raf-backstage-demo/${{ parameters.owner }}
         protectDefaultBranch: false
-        deleteBranchOnMerge: true
