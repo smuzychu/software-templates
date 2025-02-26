@@ -9,7 +9,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://raf-backstage-demo.github.io/shared-workflows
+    repoURL: https://smuzychu.github.io/shared-workflows
     chart: cockroach-serverless
     targetRevision: '0.1.19'
     helm:

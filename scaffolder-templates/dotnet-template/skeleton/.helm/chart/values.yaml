@@ -1,4 +1,4 @@
 dotnet-run:
   fullnameOverride: ${{values.artifact_id}}
   image:
-    repository: quay.io/raf-backstage-demo/${{values.artifact_id}}
+    repository: quay.io/smuzychu/${{values.artifact_id}}

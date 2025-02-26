@@ -8,7 +8,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/raf-backstage-demo/${{values.application.split(":")[1]}}-gitops
+    repoURL: https://github.com/smuzychu/${{values.application.split(":")[1]}}-gitops
     targetRevision: HEAD
     path: ./components/${{ values.component_id }}/pipeline
     helm:

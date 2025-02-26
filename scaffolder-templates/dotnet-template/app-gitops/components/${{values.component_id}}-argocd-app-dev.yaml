@@ -9,7 +9,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/raf-backstage-demo/${{ values.component_id }}
+    repoURL: https://github.com/smuzychu/${{ values.component_id }}
     targetRevision: HEAD
     path: .helm/chart
     helm:

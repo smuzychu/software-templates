@@ -60,7 +60,7 @@ spec:
       name: make a pr with the new vm
       action: publish:github:pull-request
       input:
-        repoUrl: github.com?repo=${{ parameters.application.split(":")[1] }}-gitops&owner=raf-backstage-demo
+        repoUrl: github.com?repo=${{ parameters.application.split(":")[1] }}-gitops&owner=smuzychu
         branchName: ${{ parameters.resource }}
         title: ${{ parameters.resource }} VM
         description:  ${{ parameters.resource }} virtual machine  

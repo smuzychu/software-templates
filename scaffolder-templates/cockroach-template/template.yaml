@@ -63,7 +63,7 @@ spec:
       action: publish:github:pull-request
       input:
         description: argocd apps ${{ parameters.database_id }}
-        repoUrl: github.com?repo=${{ parameters.application_id.split(":")[1] }}-gitops&owner=raf-backstage-demo
+        repoUrl: github.com?repo=${{ parameters.application_id.split(":")[1] }}-gitops&owner=smuzychu
         branchName: ${{ parameters.database_id }}
         title: argocd apps for ${{ parameters.database_id }} database
         sourcePath: ./database
